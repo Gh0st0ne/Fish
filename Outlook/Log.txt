@@ -1,4 +1,0 @@
-The emails and passwords the victim 
-
-format  - email : password
-
