@@ -2,16 +2,16 @@
 
 ![Fish](https://i.imgur.com/nQ45dEy.png "Fish")
 
-[TOC]
+
 ## About
 Fish is a phishing tool that inhabits a collection of webpages *(currently only Outlook)*. It tries to replicate webpages as closely as possible for a hard to distinguish phishing page.
 ## Features
 #### Outlook
-- Up-to-date outlook phishing page
-- Easily configurable, with a startup script
+- Up-to-date outlook phishing page.
+- Easily configurable, with a startup script.
 - Has a menu that can be used to select the up-coming options.
 - Can use any domain including but not limited to `Ngrok`, `Freenom`, `GoDaddy` etc.
-- Has built-in option to install and use ngrok for a free public domain
+- Has built-in option to install and use ngrok for a free public domain.
 - Uses flask. Has options in the start-up script to configure the host and port.
 
 ## Installation 
@@ -47,6 +47,9 @@ We have built this with our ❤️. If you would like to contribute, please fork
 
 ## Authors
 Made lovingly by [aarav2you][3] and [Kritagyaispro][4]
+
+>*Ngrok is not made by us nor do we claim ownership. Rights of Ngrok goes to their  respective owners.* 
+
 ###### More to come soon...
 
 [1]: https://ngrok.com "here"
