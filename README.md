@@ -26,10 +26,10 @@ Fish is a phishing tool that inhabits a collection of webpages *(currently only 
 
 ------------
 
-#### Run main.py
+#### Run fish.py
 `$ pip install -r requirements.txt`
 
-`$ python main.py`
+`$ python fish.py`
 
 ------------
 

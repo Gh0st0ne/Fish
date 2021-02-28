@@ -31,7 +31,7 @@ def reorient():
 def Logo1():
     return send_file("templates/sprites/microsoft_logo.svg")
 
-@app.route("/sprites/keyicon.svg")
+@app.route("/sprites/icon_key.svg")
 def Logo2():
     return send_file("templates/sprites/icon_key.svg")
 
