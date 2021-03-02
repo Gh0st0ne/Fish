@@ -1,7 +1,12 @@
 # Fish 1.0.0
 
 ![Fish](https://i.imgur.com/nQ45dEy.png "Fish")
-
+![Downloads](https://img.shields.io/github/downloads/aarav2you/Fish/total?branch=master&label=Downloads&logo=GitHub&logoColorr=ffffff&labelColor=282828&color=informational&style=flat)
+![Forks](https://img.shields.io/github/forks/aarav2you/Fish?branch=master&label=Forks&logo=GitHub&logoColor=ffffff&labelColor=282828&color=informational&style=flat)
+[![GitHub repo size](https://img.shields.io/github/repo-size/aarav2you/Fish?branch=master&label=Repo%20Size&logo=GitHub&logoColor=ffffff&labelColor=282828&style=flat)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Requirements](https://img.shields.io/requires/github/aarav2you/Fish?label=Requirements&logoColor=ffffff&labelColor=282828)
+![Discord](https://img.shields.io/discord/815516003034857522?label=Discord&logo=discord&logoColor=ffffff&labelColor=7289DA&color=2c2f33)
 
 ## About
 Fish is a phishing tool that inhabits a collection of webpages *(currently only Outlook)*. It tries to replicate webpages as closely as possible for a hard to distinguish phishing page.
@@ -36,11 +41,11 @@ Fish is a phishing tool that inhabits a collection of webpages *(currently only 
 ## Great! How do I use it?
 You can specify the values it asks for when executing the `app.py`. Leaving the settings on default is the best option (just press ⏎). Refer to the table below for all values:
 
-| `Enter redirect URL` 	| The link it will redirect the victim to after credentials have been logged in `Log.txt`. `Default: https://www.office.com/?auth=2` 	|
-|----------------------	|-------------------------------------------------------------------------------------------------------------------------------------	|
-| `Flask server host`  	| The local IP your flask server will run on. `Default: 127.0.0.1`                                                                    	|
-| `Flask server port`  	| The port your flask server will run on. `Default: 80`                                                                               	|
-| `Use ngrok`          	| This uses `nGrok`to to forward the phishing page to a public domain. More on this [here][1]. `Default: n`                                                   	|
+| `Enter redirect URL`  	| The link it will redirect the victim to after credentials have been logged in `Log.txt`. `Default: https://www.office.com/?auth=2` 	|
+|---------------------- 	|-------------------------------------------------------------------------------------------------------------------------------------|
+| `Flask server host`   	| The local IP your flask server will run on. `Default: 127.0.0.1`                                                                    |
+| `Flask server port`   	| The port your flask server will run on. `Default: 80`                                                                               |
+| `Use ngrok`           	| This uses `nGrok`to to forward the phishing page to a public domain. More on this [here][1]. `Default: n`                           |                        	
 
 ## Contribution
 We have built this with our ❤️. If you would like to contribute, please fork our project and send us a pull request for the [Dev][2] branch. If you would like to suggest, please open an issue with the label **Enhancement**.
@@ -48,6 +53,12 @@ We have built this with our ❤️. If you would like to contribute, please fork
 ## Authors
 Made lovingly by [aarav2you][3] and [Kritagyaispro][4]
 
+## Issues
+[![GitHub Issues](https://img.shields.io/github/issues/aarav2you/Fish?branch=master&label=Issues&logo=GitHub&logoColor=ffffff&labelColor=282828&style=flat)]()
+[![GitHub Closed Issues](https://img.shields.io/github/issues-closed/aarav2you/Fish?branch=master&label=Closed%20Issues&logo=GitHub&logoColor=ffffff&labelColor=282828&style=flat)]()
+[![GitHub Issues](https://img.shields.io/github/issues/aarav2you/Fish?branch=master&label=Issues&logo=GitHub&logoColor=ffffff&labelColor=282828&color=informational&style=flat)]()
+
+---
 >*Ngrok is not made by us nor do we claim ownership. Rights of Ngrok goes to their  respective owners.* 
 
 ###### More to come soon...
