@@ -1,4 +1,4 @@
-# Fish 1.0.0
+# Fish 1.1.0
 
 ![Fish](https://i.imgur.com/nQ45dEy.png "Fish")
 ![Downloads](https://img.shields.io/github/downloads/aarav2you/Fish/total?branch=master&label=Downloads&logo=GitHub&logoColorr=ffffff&labelColor=282828&color=informational&style=flat)
@@ -14,7 +14,7 @@ Fish is a phishing tool that inhabits a collection of webpages *(currently only 
 #### Outlook
 - Up-to-date outlook phishing page.
 - Easily configurable, with a startup script.
-- Has a menu that can be used to select the up-coming options.
+- Has a menu that can be used to select the up-coming options (with color!).
 - Can use any domain including but not limited to `Ngrok`, `Freenom`, `GoDaddy` etc.
 - Has built-in option to install and use ngrok for a free public domain.
 - Uses flask. Has options in the start-up script to configure the host and port.
