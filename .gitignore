@@ -1,8 +1,8 @@
 __pycache__
-.git
 .vscode
 .history
 .idea
-/gwatch.exe
+DOCKER
+gwatch.exe
 credentials.log
 tempCodeRunnerFile.py
