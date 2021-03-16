@@ -6,7 +6,7 @@ from os import system
 from sys import platform
 from threading import Thread
 from sites import siteLookUp
-
+import utils
 
 
 # Want to contribute? Make a fork and a pull request to the dev branch! I made the logo on placeit and converted into using https://www.text-image.com/convert/ascii.html. Thanks!! please star
@@ -59,36 +59,14 @@ ascii = """
 [[y]] Made by aarav2you
 [[y]] Made by Kritagyaispro
 
-[[c-bg]]_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.- [[:: FISH ::]] '~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~"""
+[[c-bg]]_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.- [[:: FISH ::]] '~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~
 
-
+        """
                                     ############################################################# Parameters and configuration #############################################################
 # We aren't responsible for anything you decide to do. This is only for education purposes.
 
 #### Initializes colorama
 colorama.init(autoreset=True)
-
-#### A list that sest long non-sensical ANSI characters to short synonyms
-COLORS = {
-    "blu": "\u001b[34;1m",
-    "r": "\u001b[31;1m",
-    "g": "\u001b[32m",
-    "y": "\u001b[33;1m",
-    "b": "\u001b[30;1m",
-    "m": "\u001b[35m",
-    "c": "\u001b[36m",
-    "w": "\u001b[37m",
-    "y-bg": "\u001b[43m",
-    "b-bg": "\u001b[40m",
-    "c-bg": "\u001b[46;1m",
-}
-
-
-#### All the colors must be prefixed and suffixed with a "[[" "color" "]]"
-def colorText(text):
-    for color in COLORS:
-        text = text.replace("[[" + color + "]]", COLORS[color])
-    return text
 
 
 #### Tells ngrok to run on the port
@@ -97,7 +75,6 @@ def start_ngrok(port):
 
 
 #### Detects the Operating System
-
 if platform == "linux" or platform == "linux2" or platform == "darwin":
     from commands import unixCommands as commands
 elif platform == "win32":
@@ -107,13 +84,13 @@ else:
 
 #### Clears the console and prints the ASCII art
 os.system(commands.clear)
-print(colorText(ascii))
+print(utils.color.colorText(ascii))
 
                                     ############################################################# Questions/ Input #############################################################
 #### Prints options
 for site in siteLookUp:
     print('\n' + Fore.RED + "[" + Fore.CYAN + str(site) + Fore.RED + "]" + Fore.BLUE + f" {siteLookUp[site]}")
-print("\n\n")
+
 #### Selects the site to create a phishing page for (currently Outlook)
 site = int(input(Fore.RED + "[" + Fore.YELLOW + "*" + Fore.RED + "]" + Fore.GREEN + " Choose an option: ") or 1)
 
