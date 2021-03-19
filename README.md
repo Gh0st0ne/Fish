@@ -46,6 +46,8 @@ You can specify the values it asks for when executing the `app.py`. Leaving the 
 | `Flask server host`  | The local IP your flask server will run on. `Default: 127.0.0.1`                                                                    |
 | `Flask server port`  | The port your flask server will run on. `Default: 80`                                                                               |
 | `Use ngrok`          | This uses `nGrok`to to forward the phishing page to a public domain. More on this [here][1]. `Default: n`                           |                        	
+## Legal
+Usage of `Fish` for attacking targets without prior mutual consent is illegal. It's the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program. Only use for educational purposes. White hat hackers, best of luck, make sure you have consent!
 
 ## Contribution
 We have built this with our ❤️. If you would like to contribute, please read [how to contribute/contributing guidelines](https://github.com/aarav2you/Fish/blob/dev/CONTRIBUTING.md). If you would like to suggest, please open an issue with the label **Enhancement**.
@@ -58,7 +60,7 @@ Made lovingly by [aarav2you][3] and [Kritagyaispro][4] and others who contribute
 [![GitHub Closed Issues](https://img.shields.io/github/issues-closed/aarav2you/Fish?branch=master&label=Closed%20Issues&logo=GitHub&logoColor=ffffff&labelColor=282828&style=flat)]()
 [![GitHub Issues](https://img.shields.io/github/issues/aarav2you/Fish?branch=master&label=Issues&logo=GitHub&logoColor=ffffff&labelColor=282828&color=informational&style=flat)]()
 
----
+------------
 >*Ngrok is not made by us nor do we claim ownership. Rights of Ngrok goes to their  respective owners.* 
 
 ###### More to come soon...
