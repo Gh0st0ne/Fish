@@ -5,19 +5,18 @@
 ![Forks](https://img.shields.io/github/forks/aarav2you/Fish?branch=master&label=Forks&logo=GitHub&logoColor=ffffff&labelColor=282828&color=informational&style=flat)
 [![GitHub repo size](https://img.shields.io/github/repo-size/aarav2you/Fish?branch=master&label=Repo%20Size&logo=GitHub&logoColor=ffffff&labelColor=282828&style=flat)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Requirements](https://img.shields.io/requires/github/aarav2you/Fish?label=Requirements&logoColor=ffffff&labelColor=282828)
 ![Discord](https://img.shields.io/discord/815516003034857522?label=Discord&logo=discord&logoColor=ffffff&labelColor=7289DA&color=2c2f33)
 
 ## About
-Fish is a phishing tool that inhabits a collection of webpages *(currently only Outlook)*. It tries to replicate webpages as closely as possible for a hard to distinguish phishing page.
+Fish is a phishing tool that inhabits a collection of webpages. It tries to replicate webpages as closely as possible for a hard to distinguish phishing page.
 ## Features
-#### Outlook
-- Up-to-date outlook phishing page.
+- Up-to-date login phishing page.
 - Easily configurable, with a startup script.
-- Has a menu that can be used to select the up-coming options (with color!).
+- Has a menu that can be used to select the different sites (with color!).
 - Can use any domain including but not limited to `Ngrok`, `Freenom`, `GoDaddy` etc.
 - Has built-in option to install and use ngrok for a free public domain.
 - Uses flask. Has options in the start-up script to configure the host and port.
+
 
 ## Installation 
 #### Clone the repo:
@@ -60,8 +59,6 @@ Made lovingly by [aarav2you][3] and [Kritagyaispro][4] and others who contribute
 [![GitHub Closed Issues](https://img.shields.io/github/issues-closed/aarav2you/Fish?branch=master&label=Closed%20Issues&logo=GitHub&logoColor=ffffff&labelColor=282828&style=flat)]()
 [![GitHub Issues](https://img.shields.io/github/issues/aarav2you/Fish?branch=master&label=Issues&logo=GitHub&logoColor=ffffff&labelColor=282828&color=informational&style=flat)]()
 
-------------
->*Ngrok is not made by us nor do we claim ownership. Rights of Ngrok goes to their  respective owners.* 
 
 ###### More to come soon...
 
