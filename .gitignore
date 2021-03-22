@@ -1,8 +1,10 @@
-__pycache__
-.git
+**__pycache__
 .vscode
 .history
 .idea
-/gwatch.exe
+DOCKER
+gwatch.exe
+ngrok.exe
 credentials.log
 tempCodeRunnerFile.py
+ngrok-stable-windows-amd64.zip
